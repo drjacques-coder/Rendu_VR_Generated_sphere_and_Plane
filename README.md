@@ -16,7 +16,7 @@ An immersive VR exploration experience built with Three.js. The application crea
 ## Required Dependencies
 - Three.js (WebGL 3D library)
 - WebXR API
-- Modern web browser with WebVR support
+- Modern web browser
 
 ## Technologies Used
 - Three.js for 3D rendering
