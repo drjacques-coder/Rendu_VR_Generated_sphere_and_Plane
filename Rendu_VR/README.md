@@ -4,7 +4,7 @@
 An immersive VR exploration experience built with Three.js. The application creates a dynamic, color-changing environment where users can walk through different universes, each with its unique color palette and ambiance. The experience is accompanied by background music that enhances the atmospheric journey.
 
 ## Preview
-[Preview](Rendu_VR/dist/Demo_Threejs_project_GIF.gif)
+[Preview](https://github.com/drjacques-coder/workspace/blob/d4d51c2b76172c18ab1d2c84498f4b66d61aa8a6/Rendu_VR/dist/Demo_Threejs_project_GIF.gif)
 
 ## Installation & Launch
 1. Clone this repository
