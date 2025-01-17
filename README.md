@@ -11,7 +11,6 @@ An immersive VR exploration experience built with Three.js. The application crea
 1. Clone this repository
 2. Open `launcher.html` in a compatible web browser
 3. Allow audio permissions when prompted
-4. Use a VR headset for the full experience
 
 ## Required Dependencies
 - Three.js (WebGL 3D library)
