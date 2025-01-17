@@ -40,24 +40,6 @@
             border: 1px solid #444;
         }
 
-        button {
-            padding: 20px 40px;
-            font-size: 24px;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(45deg, #00ff87, #60efff);
-            color: #1a1a1a;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin-top: 20px;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
         .error-message {
             color: #ff6b6b;
             margin-top: 10px;
@@ -100,12 +82,14 @@
             
             <div class="os-specific">
                 <h4>Windows:</h4>
+                <p>Open Command Prompt and navigate to the directory where <code>server.py</code> is located. Then run:</p>
                 <div class="code-block">python server.py</div>
             </div>
 
             <div class="os-specific">
                 <h4>macOS:</h4>
-                <div class="code-block">/opt/homebrew/bin/python3 server.py</div>
+                <p>Open Terminal and navigate to the directory where <code>server.py</code> is located. Then run:</p>
+                <div class="code-block">/opt/homebrew/bin/python3 /path/to/your/directory/server.py</div>
             </div>
             
             <p>You should see: "Server started at http://localhost:8000"</p>
@@ -117,35 +101,11 @@
                 <li>Make sure the Python server is running (see Step 1)</li>
                 <li>Use a WebXR-compatible browser (Chrome recommended)</li>
                 <li>Connect your VR headset if using one</li>
-                <li>Click the Launch button below</li>
+                <li>Open your browser and go to <code>http://localhost:8000</code></li>
+                <li>Navigate to the directory of your VR experience</li>
                 <li>Allow any browser permissions when prompted</li>
-                <li>Put on your VR headset and enjoy!</li>
             </ol>
         </div>
     </div>
-
-    <button onclick="launchExperience()">Launch Experience</button>
-    <div id="errorMessage" class="error-message">Please select your platform before launching</div>
-
-    <script>
-        function launchExperience() {
-            const platform = document.getElementById('platformSelect').value;
-            const errorMessage = document.getElementById('errorMessage');
-            
-            if (!platform) {
-                errorMessage.style.display = 'block';
-                return;
-            }
-            
-            errorMessage.style.display = 'none';
-            
-            // Launch local server based on platform
-            if (platform === 'windows') {
-                window.location.href = 'http://localhost:8000/experience.html';
-            } else if (platform === 'macos') {
-                window.location.href = 'http://127.0.0.1:8000/experience.html';
-            }
-        }
-    </script>
 </body>
 </html>
