@@ -45,7 +45,8 @@ function initAudio() {
     if (audioInitialized) return;
     console.log('Initializing audio...');
     
-    audioLoader.load('/Assets/AK - Afterthought.mp3', // Updated path
+    const audioFilePath = './Assets/AK - Afterthought.mp3'; // Use relative path or configuration setting
+    audioLoader.load(audioFilePath, 
         buffer => {
             console.log('Audio loaded successfully');
             sound.setBuffer(buffer);
