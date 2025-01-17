@@ -78,6 +78,14 @@
             border-radius: 4px;
             font-family: monospace;
             margin: 10px 0;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .os-specific {
+            border-left: 4px solid #00ff87;
+            margin: 10px 0;
+            padding-left: 15px;
         }
     </style>
 </head>
@@ -89,11 +97,18 @@
         
         <div class="server-instructions">
             <h3>Step 1: Launch the Python Server</h3>
-            <p>Open a terminal/command prompt in the project directory and run:</p>
-            <div class="code-block">
-                python server.py
+            
+            <div class="os-specific">
+                <h4>Windows:</h4>
+                <div class="code-block">python server.py</div>
             </div>
-            <p>You should see: "Server started at http://localhost:8080"</p>
+
+            <div class="os-specific">
+                <h4>macOS:</h4>
+                <div class="code-block">/opt/homebrew/bin/python3 server.py</div>
+            </div>
+            
+            <p>You should see: "Server started at http://localhost:8000"</p>
         </div>
 
         <h3>Step 2: Launch VR Experience</h3>
@@ -126,9 +141,9 @@
             
             // Launch local server based on platform
             if (platform === 'windows') {
-                window.location.href = 'http://localhost:8080/experience.html';
+                window.location.href = 'http://localhost:8000/experience.html';
             } else if (platform === 'macos') {
-                window.location.href = 'http://127.0.0.1:8080/experience.html';
+                window.location.href = 'http://127.0.0.1:8000/experience.html';
             }
         }
     </script>
