@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rendu VR</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .cursor {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 1000;
+        }
+    
+        #progress-ring {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+    
+        #progress-ring circle {
+            fill: transparent;
+            stroke: #00ff00;
+            stroke-width: 2;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: center;
+        }
+    
+        #progress-ring.active {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+    
+        #progress-ring .background {
+            stroke: rgba(255, 255, 255, 0.2);
+        }
+
+        #welcome-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s;
+            z-index: 1000;
+        }
+
+        #welcome-message.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div id="metrics">
+        <div>Distance traveled: <span id="distance">0</span> meters</div>
+        <div>Planes generated: <span id="planes">0</span></div>
+        <div>Highest point: <span id="height">0</span> meters</div>
+    </div>
+    <div id="cursor-timer"></div>
+    <div id="progress-ring">
+        <svg width="30" height="30" viewBox="0 0 30 30">
+            <circle class="background" cx="15" cy="15" r="13"/>
+            <circle class="progress" cx="15" cy="15" r="13"/>
+        </svg>
+    </div>
+    <div id="welcome-message">Welcome traveller, find the sphere to continue your journey...</div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js'></script>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
