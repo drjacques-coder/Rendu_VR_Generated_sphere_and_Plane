@@ -45,7 +45,7 @@ function initAudio() {
     if (audioInitialized) return;
     console.log('Initializing audio...');
     
-    audioLoader.load('./AK - Afterthought.mp3',
+    audioLoader.load('C:\workspace\Rendu_VR\Assets\AK - Afterthought.mp3',
         buffer => {
             console.log('Audio loaded successfully');
             sound.setBuffer(buffer);
