@@ -63,28 +63,48 @@
             margin-top: 10px;
             display: none;
         }
+
+        .server-instructions {
+            background: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .code-block {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
     <h1>VR Experience Launcher</h1>
     
     <div class="instructions">
-        <h2>Welcome to the VR Experience</h2>
-        <p>Follow these steps to start your immersive journey:</p>
+        <h2>Server Setup Instructions</h2>
         
-        <select class="platform-select" id="platformSelect">
-            <option value="">Select your platform</option>
-            <option value="windows">Windows</option>
-            <option value="macos">macOS</option>
-        </select>
+        <div class="server-instructions">
+            <h3>Step 1: Launch the Python Server</h3>
+            <p>Open a terminal/command prompt in the project directory and run:</p>
+            <div class="code-block">
+                python server.py
+            </div>
+            <p>You should see: "Server started at http://localhost:8080"</p>
+        </div>
 
+        <h3>Step 2: Launch VR Experience</h3>
         <div class="steps">
             <ol>
-                <li>Make sure you have a WebXR-compatible browser installed (Chrome recommended)</li>
-                <li>Connect your VR headset if you plan to use one</li>
+                <li>Make sure the Python server is running (see Step 1)</li>
+                <li>Use a WebXR-compatible browser (Chrome recommended)</li>
+                <li>Connect your VR headset if using one</li>
                 <li>Click the Launch button below</li>
-                <li>Allow audio permissions when prompted</li>
-                <li>Put on your VR headset and enjoy the experience!</li>
+                <li>Allow any browser permissions when prompted</li>
+                <li>Put on your VR headset and enjoy!</li>
             </ol>
         </div>
     </div>
