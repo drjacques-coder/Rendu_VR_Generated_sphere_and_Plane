@@ -65,10 +65,46 @@
         #welcome-message.visible {
             opacity: 1;
         }
+
+        #timed-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 30px);
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        #timed-message.visible {
+            opacity: 1;
+        }
+
+        #sphere-hint {
+            position: fixed;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            pointer-events: none;
+            z-index: 1000;
+            transform: translate(-50%, 30px);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #sphere-hint.visible {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <div class="cursor"></div>
+    <div id="sphere-hint">Find a sphere and watch it for a while to continue your travel</div>
     <div id="metrics">
         <div>Distance traveled: <span id="distance">0</span> meters</div>
         <div>Planes generated: <span id="planes">0</span></div>
@@ -82,10 +118,71 @@
         </svg>
     </div>
     <div id="welcome-message">Welcome traveller, find the sphere to continue your journey...</div>
+    <div id="timed-message">Look at the sphere to continue your journey</div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js'></script>
     <script type="module" src="./script.js"></script>
+    <script>
+        const timedMessage = document.getElementById('timed-message');
+        const cursor = document.querySelector('.cursor');
+        
+        function showMessage() {
+            timedMessage.classList.add('visible');
+            setTimeout(() => {
+                timedMessage.classList.remove('visible');
+            }, 4000);
+        }
+        
+        // Update message position to follow cursor
+        document.addEventListener('mousemove', (e) => {
+            if(timedMessage.classList.contains('visible')) {
+                timedMessage.style.left = cursor.offsetLeft + 'px';
+                timedMessage.style.top = cursor.offsetTop + 'px';
+            }
+        });
+
+        // Show initial message after 15 seconds
+        setTimeout(showMessage, 15000);
+
+        // When sphere is detected
+        window.onSphereDetected = function() {
+            showMessage();
+        }
+
+        const sphereHint = document.getElementById('sphere-hint');
+
+        function showSphereHint() {
+            sphereHint.classList.add('visible');
+            
+            // Update position to follow cursor
+            const updatePosition = () => {
+                sphereHint.style.left = cursor.offsetLeft + 'px';
+                sphereHint.style.top = cursor.offsetTop + 'px';
+            };
+            
+            document.addEventListener('mousemove', updatePosition);
+            
+            // Fade out after 4 seconds
+            setTimeout(() => {
+                sphereHint.classList.remove('visible');
+                document.removeEventListener('mousemove', updatePosition);
+            }, 4000);
+        }
+
+        // Show message after 15 seconds
+        setTimeout(showSphereHint, 15000);
+    </script>
+    <script>
+        // Make sure the showMessage function is defined first
+        function showMessage() {
+            // Add your message display logic here
+            console.log("Message shown");
+        }
+
+        // Set the timeout after the function is defined
+        setTimeout(showMessage, 15000);
+    </script>
 </body>
 </html>

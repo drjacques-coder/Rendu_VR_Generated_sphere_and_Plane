@@ -249,7 +249,9 @@ let lookAtSphereTime = 0;
 const lookDuration = 3; // 3 seconds
 const minDistance = 10; // Minimum distance to start the watching timer
 
-// Update checkLookingAtSphere function
+// Add at top with other variables
+let hasLookedAtSphere = false;
+
 function checkLookingAtSphere() {
     if (!sphere) return;
     
@@ -257,6 +259,7 @@ function checkLookingAtSphere() {
     const intersects = raycaster.intersectObject(sphere);
     const progressRing = document.getElementById('progress-ring');
     const progressCircle = progressRing.querySelector('.progress');
+    const timedMessage = document.getElementById('timed-message');
     const circumference = 2 * Math.PI * 13;
     
     if (intersects.length > 0) {
@@ -264,6 +267,13 @@ function checkLookingAtSphere() {
         if (distance <= minDistance) {
             lookAtSphereTime += clock.getDelta();
             progressRing.classList.add('active');
+            
+            // Show message only if sphere hasn't been looked at before
+            if (!hasLookedAtSphere) {
+                timedMessage.classList.add('visible');
+                hasLookedAtSphere = true; // Mark sphere as looked at
+            }
+            
             const progress = lookAtSphereTime / lookDuration;
             const dashOffset = circumference * (1 - progress);
             progressCircle.style.strokeDasharray = circumference;
@@ -271,12 +281,15 @@ function checkLookingAtSphere() {
             
             if (lookAtSphereTime >= lookDuration) {
                 teleportPlayer();
+                timedMessage.classList.remove('visible');
             }
         } else {
             resetTimer();
+            timedMessage.classList.remove('visible');
         }
     } else {
         resetTimer();
+        timedMessage.classList.remove('visible');
     }
 }
 
