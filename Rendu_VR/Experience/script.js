@@ -96,6 +96,11 @@ let sphereGeometry;
 let sphereMaterial;
 let sphereNoiseTime = 0;
 
+// Add at the top with other variables
+let isRunning = false;
+const normalSpeed = 0.1;
+const runningSpeed = 0.2;
+
 // Clock for animations
 const clock = new THREE.Clock();
 
@@ -202,6 +207,12 @@ function generatePlane(spherePosition) {
     }
     isFirstGeneration = false;
     planesGenerated++;
+
+     // Show running mechanic message during the second generation
+     if (planesGenerated === 2 && !hasShownRunningMessage) {
+        showRunningMechanicMessage();
+        hasShownRunningMessage = true;
+    }
 
     return { plane, sphere };
 }
@@ -466,7 +477,7 @@ const movement = {
 
 // Speed constants
 const MOVEMENT = {
-    speed: 20,
+    speed: 140,
     jumpSpeed: 20
 };
 
@@ -507,6 +518,21 @@ document.addEventListener('keyup', (event) => {
     }
 });
 
+// Add event listeners for running mechanic
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Shift') {
+        isRunning = true;
+    }
+});
+
+document.addEventListener('keyup', (event) => {
+    if (event.key === 'Shift') {
+        isRunning = false;
+    }
+});
+
+let hasShownRunningMessage = false;
+
 function handleMovement(delta) {
     if (!controls.isLocked) return;
 
@@ -515,10 +541,12 @@ function handleMovement(delta) {
     moveDirection.y = 0;
     moveDirection.normalize();
 
+    const speed = isRunning ? runningSpeed : normalSpeed;
+
     if (movement.forward !== 0) {
         controls.getObject().position.addScaledVector(
             moveDirection,
-            movement.forward * MOVEMENT.speed * delta
+            movement.forward * MOVEMENT.speed * speed * delta
         );
     }
 
@@ -526,7 +554,7 @@ function handleMovement(delta) {
         const rightVector = new THREE.Vector3(-moveDirection.z, 0, moveDirection.x);
         controls.getObject().position.addScaledVector(
             rightVector,
-            movement.right * MOVEMENT.speed * delta
+            movement.right * MOVEMENT.speed * speed * delta
         );
     }
 }

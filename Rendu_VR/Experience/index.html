@@ -119,13 +119,8 @@
     </div>
     <div id="welcome-message">Welcome traveller, find the sphere to continue your journey...</div>
     <div id="timed-message">Look at the sphere to continue your journey</div>
+    <div id="running-message" style="display: none;">Hold Shift to run faster!</div>
     
-    <!-- Embed audio file -->
-    <audio id="background-audio" controls autoplay loop>
-        <source src="./Assets/AK - Afterthought.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
     <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js'></script>
@@ -180,6 +175,34 @@
 
         // Show message after 15 seconds
         setTimeout(showSphereHint, 15000);
+
+        // Add this function to show the running mechanic message
+        function showRunningMechanicMessage() {
+            const message = document.getElementById('running-message');
+            message.style.position = 'fixed';
+            message.style.bottom = '20px';
+            message.style.left = '50%';
+            message.style.transform = 'translateX(-50%)';
+            message.style.color = 'white';
+            message.style.fontFamily = 'Arial, sans-serif';
+            message.style.fontSize = '24px';
+            message.style.textAlign = 'center';
+            message.style.opacity = '0';
+            message.style.transition = 'opacity 1s';
+            message.style.zIndex = '1000';
+            message.style.display = 'block';
+
+            setTimeout(() => {
+                message.style.opacity = '1';
+            }, 1000);
+
+            setTimeout(() => {
+                message.style.opacity = '0';
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 1000);
+            }, 5000);
+        }
     </script>
 </body>
 </html>
