@@ -20,23 +20,23 @@ To run this project locally, follow these steps:
    ```sh
    git clone https://github.com/your-username/your-repo.git
    cd your-repo/Rendu_VR/Experience
+   
+2. **Open the project in Visual Studio Code**:
 
-   Open the project in Visual Studio Code:
-
-2. **Open Visual Studio Code**.
-Click on File > Open Folder... and select the Experience folder.
+- Open Visual Studio Code.
+- Click on File > Open Folder... and select the Experience folder.
 
 3. **Install the Live Server extension**:
-Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing Ctrl+Shift+X.
-Search for "Live Server" and click "Install" on the extension by Ritwick Dey.
+- Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing Ctrl+Shift+X.
+- Search for "Live Server" and click "Install" on the extension by Ritwick Dey.
 
 4. **Start Live Server**:
 
-In the Explorer view, right-click on index.html and select Open with Live Server.
+- In the Explorer view, right-click on index.html and select Open with Live Server.
 
 5. **Access the project**:
 
-Your project will open in the default web browser at http://127.0.0.1:5500 (or a similar local address).
+- Your project will open in the default web browser at http://127.0.0.1:5500 (or a similar local address).
 
 ## Required Dependencies
 - Three.js (WebGL 3D library)
