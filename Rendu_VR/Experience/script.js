@@ -158,11 +158,12 @@ function generatePlane(spherePosition) {
     const colorArray = new Float32Array(vertices.count * 3);
     for (let i = 0; i < vertices.count; i++) {
         const y = vertices.getY(i);
-        const normalizedHeight = Math.max(0, Math.min(1, y / 20)); // Normalize height to 0-1 range
+        const normalizedHeight = Math.max(0, Math.min(1, y / 60)); // Adjust normalization range to reduce intensity
+        const scaledHeight = Math.sqrt(normalizedHeight); // Apply non-linear scaling to reduce effect of high values
         const color = new THREE.Color(
-            normalizedHeight * planeColor.r, // Red component
-            normalizedHeight * planeColor.g, // Green component
-            normalizedHeight * planeColor.b  // Blue component
+            scaledHeight * planeColor.r, // Red component
+            scaledHeight * planeColor.g, // Green component
+            scaledHeight * planeColor.b  // Blue component
         );
         colorArray.set([color.r, color.g, color.b], i * 3); // Streamlined color setting
     }
