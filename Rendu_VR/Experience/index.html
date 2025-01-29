@@ -119,6 +119,13 @@
     </div>
     <div id="welcome-message">Welcome traveller, find the sphere to continue your journey...</div>
     <div id="timed-message">Look at the sphere to continue your journey</div>
+    
+    <!-- Embed audio file -->
+    <audio id="background-audio" controls autoplay loop>
+        <source src="./Assets/AK - Afterthought.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js'></script>
@@ -173,16 +180,6 @@
 
         // Show message after 15 seconds
         setTimeout(showSphereHint, 15000);
-    </script>
-    <script>
-        // Make sure the showMessage function is defined first
-        function showMessage() {
-            // Add your message display logic here
-            console.log("Message shown");
-        }
-
-        // Set the timeout after the function is defined
-        setTimeout(showMessage, 15000);
     </script>
 </body>
 </html>

@@ -6,11 +6,37 @@ An immersive VR exploration experience built with Three.js. The application crea
 ## Preview
 ![Demo_Threejs_project_GIF](https://github.com/user-attachments/assets/728bb421-11fb-4f4c-8622-18bdd38b47e5)
 
-
 ## Installation & Launch
-1. Clone this repository
-2. Open `launcher.html` in a compatible web browser
-3. Allow audio permissions when prompted
+
+To run this project locally, follow these steps:
+
+### Prerequisites
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+
+### Steps
+
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo/Rendu_VR/Experience
+
+   Open the project in Visual Studio Code:
+
+2. **Open Visual Studio Code**.
+Click on File > Open Folder... and select the Experience folder.
+
+3. **Install the Live Server extension**:
+Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing Ctrl+Shift+X.
+Search for "Live Server" and click "Install" on the extension by Ritwick Dey.
+
+4. **Start Live Server**:
+
+In the Explorer view, right-click on index.html and select Open with Live Server.
+
+5. **Access the project**:
+
+Your project will open in the default web browser at http://127.0.0.1:5500 (or a similar local address).
 
 ## Required Dependencies
 - Three.js (WebGL 3D library)
@@ -28,7 +54,3 @@ An immersive VR exploration experience built with Three.js. The application crea
 
 ## Development Context
 This project was developed as part of the Virtual Reality course at the University of Lausanne (UNIL), taught by Isaac Pante (SLI, Lettres, UNIL).
-
-## Features
-- Dynamic color-changing environment
-- VR compatibility
