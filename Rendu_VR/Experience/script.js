@@ -132,8 +132,12 @@ function generatePlane(spherePosition) {
     if (sphere) scene.add(sphere);
 
     // Create new plane
-    const maxHeight = Math.random() * 20 + 15; // Max height between 15 and 35 for more variability
-    const minHeight = -(Math.random() * 20 + 10); // Min height between -10 and -30 for more variability
+    const maxHeight = Math.random() * 30 + 10; // Max height between 10 and 40 for more variability
+    const minHeight = -(Math.random() * 30 + 5); // Min height between -5 and -35 for more variability
+    // Adjust noise scale based on maxHeight
+    const noiseScale = maxHeight > 25 ? 200 : 100; // Larger scale for higher maxHeight, smaller scale for lower maxHeight
+    const noiseFrequency = maxHeight > 25 ? 0.005 : 0.01; // Lower frequency for higher maxHeight, higher frequency for lower maxHeight
+
     if (plane) scene.remove(plane); // Remove the previous plane
     if (sphere) scene.remove(sphere); // Remove the previous sphere
 
@@ -144,9 +148,9 @@ function generatePlane(spherePosition) {
     for (let i = 0; i < vertices.count; i++) {
         const x = vertices.getX(i);
         const z = vertices.getZ(i);
-        const variableDepth = simplexNoise.noise2D(x / 100, z / 100) * 5; // Add variability to the depth
-        const rawY = simplexNoise.noise2D(x / 50, z / 50) * (maxHeight - minHeight) + minHeight + variableDepth; // Simplified noise calculation for performance
-        const y = Math.max(rawY, 0); // Flattenm lower elevations
+        const variableDepth = simplexNoise.noise2D(x * noiseFrequency, z * noiseFrequency) * 5; // Adjust noise scale and reduce depth
+        const rawY = simplexNoise.noise2D(x * noiseFrequency * 2, z * noiseFrequency * 2) * (maxHeight - minHeight) + minHeight + variableDepth; // Adjust noise frequency
+        const y = Math.max(rawY, 0); // Flatten lower elevations
         vertices.setY(i, y);
     }
     vertices.needsUpdate = true;
