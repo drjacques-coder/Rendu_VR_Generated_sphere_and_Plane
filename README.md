@@ -18,8 +18,8 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo/Rendu_VR/Experience
+   git clone https://github.com/drjacques-coder/Rendu_VR_Generated_sphere_and_Plane.git
+   cd Rendu_VR_Generated_sphere_and_Plane/Rendu_VR/Experience
    
 2. **Open the project in Visual Studio Code**:
 
